@@ -97,7 +97,6 @@ def get_player_stats(name: str, game: str):
         response = requests.get(
             f"{GAMETOOLS_BASE}{game}/all", params={"name": name, "format_values": False}
         ).json()
-
         # Extracts base player stats
         player_stats = {k: response[k] for k in GAME_STATS["PLAYER_BASE_STATS"]}
 
@@ -121,7 +120,6 @@ def get_player_stats(name: str, game: str):
                     "accuracy": 0.0,
                     "hskr": 0.0,
                 }
-        
         weapons_flat = flatten_map(weapon_stats)
         player_stats.update(weapons_flat)
 
@@ -134,16 +132,16 @@ def get_player_stats(name: str, game: str):
                 "destroyed": v["destroyed"],
                 "time_in": v["timeIn"],
             }
-        
         vehicles_flat = flatten_map(vehicle_stats)
         player_stats.update(vehicles_flat)
 
         # Aggregates additional stats
         additional_stats = {}
         for stat_category, name_key, value_key in GAME_STATS["PLAYER_ADDITIONAL_STATS"]:
-            additional_stats[stat_category] = {
-                item[name_key]: item[value_key] for item in response[stat_category]
-            }
+            for item in response[stat_category]:
+                additional_stats[item[name_key]] = {
+                    value_key: item[value_key]
+                }
         additional_flat = flatten_map(additional_stats)
         player_stats.update(additional_flat)
         return player_stats
