@@ -10,6 +10,7 @@ A comprehensive data collection tool that builds rich datasets of Battlefield pl
 Currently, the scraper supports:
 * **Battlefield 3:** use `-g bf3` in command line arguments
 * **Battlefield 4:** use `-g bf4` in command line arguments
+* **Battlefield Hardline:** use `-g bfh` in command line arguments
 
 **Planned Support:** The project uses an extensible architecture designed to easily add support for other Battlefield titles.
 

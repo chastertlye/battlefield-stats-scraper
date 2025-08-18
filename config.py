@@ -2,11 +2,7 @@
 BFLIST_BASE = "https://api.bflist.io/v2/"
 GAMETOOLS_BASE = "https://api.gametools.network/"
 
-SUPPORTED_GAMES = ['bf3', 'bf4']
-
-BF3_PLAYER_ADDITIONAL_STATS = [
-    ["classes", "className", "score"]
-]
+SUPPORTED_GAMES = ['bf3', 'bf4', 'bfh']
 
 BF3_PLAYER_BASE_STATS = [
     "userName",
@@ -33,6 +29,10 @@ BF3_PLAYER_BASE_STATS = [
     "skill",
     "longestHeadShot",
     "highestKillStreak",
+]
+
+BF3_PLAYER_ADDITIONAL_STATS = [
+    ["classes", "className", "score"]
 ]
 
 BF4_PLAYER_BASE_STATS = [
@@ -70,6 +70,32 @@ BF4_PLAYER_ADDITIONAL_STATS = [
     ["progress", "progressName", "current"],
 ]
 
+BFH_PLAYER_BASE_STATS = [
+  "userName",
+  "id",
+  "rank",
+  "scorePerMinute",
+  "killsPerMinute",
+  "winPercent",
+  "killDeath",
+  "accuracy",
+  "secondsPlayed",
+  "kills",
+  "deaths",
+  "wins",
+  "loses",
+  "killAssists",
+  "enforcer",
+  "mechanic",
+  "operator",
+  "professional",
+  "hacker",
+  "cashPerMinute"
+]
+
+BFH_PLAYER_ADDITIONAL_STATS = [
+    ["progress", "progressName", "current"],
+]
 
 STATS_MANAGER = {
     "bf3":{
@@ -79,5 +105,9 @@ STATS_MANAGER = {
     "bf4":{
         "PLAYER_BASE_STATS": BF4_PLAYER_BASE_STATS,
         "PLAYER_ADDITIONAL_STATS": BF4_PLAYER_ADDITIONAL_STATS,
+    },
+    "bfh":{
+        "PLAYER_BASE_STATS": BFH_PLAYER_BASE_STATS,
+        "PLAYER_ADDITIONAL_STATS": BFH_PLAYER_ADDITIONAL_STATS,
     }
 }
