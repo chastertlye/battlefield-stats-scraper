@@ -3,7 +3,7 @@ import argparse
 import time
 import sys
 
-from config import SUPPORTED_GAMES
+from config import ALL_SUPPORTED_GAMES, AUTO_SCRAPING_SUPPORTED_GAMES
 from scraper import get_all_servers, players_from_servers, update_dataset
 
 log.basicConfig(level=log.INFO, format="%(asctime)s [%(levelname)s]: %(message)s")
@@ -40,8 +40,8 @@ def main():
         "--game",
         required=True,
         type=str,
-        choices=SUPPORTED_GAMES,
-        help=f"Game to scrape data from. Supported: {SUPPORTED_GAMES}",
+        choices=ALL_SUPPORTED_GAMES,
+        help=f"Game to scrape data from. Supported: {ALL_SUPPORTED_GAMES}, auto scraping directly from servers is only supported for: {AUTO_SCRAPING_SUPPORTED_GAMES}.",
     )
     parser.add_argument(
         "-i",
@@ -76,7 +76,11 @@ def main():
         _run_from_file(args.output, args.input, args.game, args.batch)
         log.info("Scraping process completed. Exiting.")
         sys.exit(0)
-        
+    else:
+        if args.game not in AUTO_SCRAPING_SUPPORTED_GAMES:
+            log.error(f"{args.game} does not support auto scraping from servers. Please provide a file containing player names with -i/--input.")
+            sys.exit(1)
+       
     cycle = 0
     while args.infinite or cycle == 0:
         cycle+=1

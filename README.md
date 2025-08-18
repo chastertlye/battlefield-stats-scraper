@@ -11,6 +11,8 @@ Currently, the scraper supports:
 * **Battlefield 3:** use `-g bf3` in command line arguments
 * **Battlefield 4:** use `-g bf4` in command line arguments
 * **Battlefield Hardline:** use `-g bfh` in command line arguments
+* **Battlefield 1:** use `-g bf1` in command line arguments (only with `-i, --input`)
+* **Battlefield V:** use `-g bfv` in command line arguments (only with `-i, --input`)
 
 **Planned Support:** The project uses an extensible architecture designed to easily add support for other Battlefield titles.
 
